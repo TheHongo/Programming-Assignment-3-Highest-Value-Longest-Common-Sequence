@@ -8,7 +8,23 @@ std::string INPUT_FILE = "input.in";
 std::string OUTPUT_FILE = "output.out";
 
 std::string walkBackwards(std::string A, std::string B, std::vector<std::vector<int> > mt, std::unordered_map<char, int> mp){
-    return "test";
+    int i = A.size();
+    int j = B.size();
+    std::string res;
+    while (i > 0 && j > 0){
+        if (A[i-1] == B[j-1] && mt[i][j] == mt[i-1][j-1] + mp[A[i-1]]){
+            res = A[i-1] + res;
+            i--;
+            j--;
+        }
+        else if (mt[i][j] == mt[i-1][j]){
+            i--;
+        }
+        else{
+            j--;
+        }
+    }
+    return res;
 }
 
 std::pair<int, std::string> solve(std::string filename){
