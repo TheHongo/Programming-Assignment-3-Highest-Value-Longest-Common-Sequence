@@ -4,7 +4,7 @@ import re
 import os
 
 input_files = [
-    "example0.in", "example2.in", "example3.in", "example4.in", "example5.in",
+    "example1.in", "example2.in", "example3.in", "example4.in", "example5.in",
     "example6.in", "example7.in", "example8.in", "example9.in", "example10.in"
 ]
 
@@ -15,7 +15,7 @@ for i, input_file in enumerate(input_files, start=1):
     output_file = f"{base_name}.out"
 
     process = subprocess.Popen(
-        ["a.exe"],
+        ["main.exe"],
         stdin=subprocess.PIPE,
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,

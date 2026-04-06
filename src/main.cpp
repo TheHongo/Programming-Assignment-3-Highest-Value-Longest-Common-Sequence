@@ -67,6 +67,11 @@ int main(){
     std::cout << "Enter the input file name: ";
     std::cin >> inputFile;
 
+    std:: string outputFile;
+    std::cout << "Enter the output file name: ";
+    std::cin >> outputFile;
+
+
     auto start = std::chrono::high_resolution_clock::now();
 
     std::pair<int, std::string> res = solve(INPUT_PATH + inputFile);
@@ -75,9 +80,6 @@ int main(){
     std::chrono::duration<double> duration = end - start;
     std::cout << "Execution time: " << duration.count() << std::endl;
 
-    std:: string outputFile;
-    std::cout << "Enter the output file name: ";
-    std::cin >> outputFile;
 
     std::ofstream fout(OUTPUT_PATH + outputFile);
     fout << res.first << std::endl;
