@@ -4,7 +4,7 @@ Name: Hong Ouyang | UFID: 54798985
 Name: Jack Stone | UFID: 22490590
 
 # Instructions for Running the Algorithms
-1. Clone the repo into an IDE that runs Python.
+1. Clone the repo into an IDE that runs C++ (and Python if running Benchmark.py).
 
 2. If applicable, add your input file into `/tests/input/`.
 
@@ -86,3 +86,31 @@ If we have the case where $a_i$ = $b_j$, we would match the character with the p
 
 Thus, we consider all possibilities (excluding from either string or including the match) and take the maximum, ensuring the optimal solution is found.
 
+## Question 3
+```
+HVLCS-Length(A, B, weight):
+    n = length(A)
+    m = length(B)
+
+    create table DP[0..n][0..m]
+
+    // base cases
+    for i = 0 to n:
+        DP[i][0] = 0
+    for j = 0 to m:
+        DP[0][j] = 0
+
+    // recursive calls
+    for i = 1 to n:
+        for j = 1 to m:
+            DP[i][j] = max(DP[i-1][j], DP[i][j-1])
+
+            if A[i] == B[j]:
+                DP[i][j] = max(
+                    DP[i][j], DP[i-1][j-1] + weight[A[i]]
+                )
+
+    return DP[n][m]
+```
+
+The runtime of the algorithm is O(n*m)
