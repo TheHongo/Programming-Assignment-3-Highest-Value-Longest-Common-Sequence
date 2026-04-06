@@ -74,7 +74,7 @@ OPT(i, j) =
 \begin{cases} 
 0 & \text{if } i = 0 \text{ or } j = 0 \\
 max[OPT(i−1, j), OPT(i, j−1)] & \text{if } a_i \neq b_j \\
-max[OPT(i-1, j), OPT(i, j-1), OPT(i-1,j-1)+w(a_i)] & \text{if } a_i = b_j
+max[OPT(i-1,j-1)+w(a_i)] & \text{if } a_i = b_j
 \end{cases}
 $$
 
@@ -82,7 +82,7 @@ The recurrence equation is correct because if, for example, we have the characte
 
 If we have the case where $a_i$ $\neq$ $b_j$, they can't be part of a common subsequence, so the optimal solution must either have the max value of either $a_i$ or $b_j$ while excluding the other.
 
-If we have the case where $a_i$ = $b_j$, we would match the character with the previous characters OPT(i-i, j-1), and add the value of it to the previous until $a_i$ $\neq$ $b_j$ and save the max value.
+If we have the case where $a_i$ = $b_j$, we would match the character with the previous characters OPT(i-1, j-1), and add the value of it to the previous until $a_i$ $\neq$ $b_j$ and save the max value.
 
 Thus, we consider all possibilities (excluding from either string or including the match) and take the maximum, ensuring the optimal solution is found.
 
