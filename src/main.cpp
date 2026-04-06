@@ -3,9 +3,10 @@
 #include <unordered_map>
 #include <vector>
 #include <fstream>
+#include <chrono>
 
-std::string INPUT_FILE = "input.in";
-std::string OUTPUT_FILE = "output.out";
+std::string INPUT_PATH = "../tests/input/";
+std::string OUTPUT_PATH = "../tests/output/";
 
 std::string walkBackwards(std::string A, std::string B, std::vector<std::vector<int> > mt, std::unordered_map<char, int> mp){
     int i = A.size();
@@ -62,7 +63,23 @@ std::pair<int, std::string> solve(std::string filename){
 }
 
 int main(){
-    std::pair<int, std::string> res = solve(INPUT_FILE);
-    std::cout << "Max Value: " << res.first << std::endl;
-    std::cout << "Optimal Subsequence: " << res.second << std::endl;
+    std::string inputFile;
+    std::cout << "Enter the input file name: ";
+    std::cin >> inputFile;
+
+    auto start = std::chrono::high_resolution_clock::now();
+
+    std::pair<int, std::string> res = solve(INPUT_PATH + inputFile);
+
+    auto end = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> duration = end - start;
+    std::cout << "Execution time: " << duration.count() << std::endl;
+
+    std:: string outputFile;
+    std::cout << "Enter the output file name: ";
+    std::cin >> outputFile;
+
+    std::ofstream fout(OUTPUT_PATH + outputFile);
+    fout << res.first << std::endl;
+    fout << res.second << std::endl;
 }
