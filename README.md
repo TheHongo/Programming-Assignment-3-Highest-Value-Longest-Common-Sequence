@@ -74,7 +74,7 @@ OPT(i, j) =
 \begin{cases} 
 0 & \text{if } i = 0 \text{ or } j = 0 \\
 max[OPT(i−1, j), OPT(i, j−1)] & \text{if } a_i \neq b_j \\
-max[OPT(i-1,j-1)+w(a_i)] & \text{if } a_i = b_j
+max[OPT(i−1, j), OPT(i, j−1), OPT(i-1,j-1)+w(a_i)] & \text{if } a_i = b_j
 \end{cases}
 $$
 
